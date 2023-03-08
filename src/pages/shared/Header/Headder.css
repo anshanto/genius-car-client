@@ -1,0 +1,13 @@
+.appoint-btn {
+    color: #FF3811;
+    border: 1px solid #FF3811;
+    padding: 8px 10px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.appoint-btn:hover {
+    background-color: #f13b16;
+    color: white;
+}
