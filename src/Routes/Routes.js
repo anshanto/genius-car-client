@@ -32,7 +32,7 @@ const router = createBrowserRouter([
             {
                 path: '/checkout/:id',
                 element: <PrivateRouter><Checkout></Checkout></PrivateRouter>,
-                loader: ({ params }) => fetch(`hhttps://y-three-ebon.vercel.app/services/${params.id}`)
+                loader: ({ params }) => fetch(`https://y-three-ebon.vercel.app/services/${params.id}`)
             },
             {
                 path: '/orders',

@@ -24,7 +24,7 @@ const Checkout = () => {
             message
         }
 
-        fetch('hhttps://y-three-ebon.vercel.app/orders', {
+        fetch('https://y-three-ebon.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

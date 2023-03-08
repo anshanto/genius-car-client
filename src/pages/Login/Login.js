@@ -30,7 +30,7 @@ const Login = () => {
                 console.log(currentUser)
 
                 // jwt token
-                fetch('hhttps://y-three-ebon.vercel.app/jwt', {
+                fetch('https://y-three-ebon.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'
