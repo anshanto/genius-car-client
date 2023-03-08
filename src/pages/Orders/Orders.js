@@ -10,7 +10,7 @@ const Orders = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/orders?email=${user?.email}`, {
+        fetch(`hhttps://y-three-ebon.vercel.app/orders?email=${user?.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('genius-token')}`
             }
@@ -27,7 +27,7 @@ const Orders = () => {
     const handleDelete = (id) => {
         const proceed = window.confirm('Are you want to delete');
         if (proceed) {
-            fetch(`http://localhost:5000/orders/${id}`, {
+            fetch(`hhttps://y-three-ebon.vercel.app/orders/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
@@ -43,7 +43,7 @@ const Orders = () => {
     }
 
     const handleStatus = id => {
-        fetch(`http://localhost:5000/orders/${id}`, {
+        fetch(`hhttps://y-three-ebon.vercel.app/orders/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'
