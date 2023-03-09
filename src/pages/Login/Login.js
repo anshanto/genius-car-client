@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaFacebook, FaGofore, FaLinkedin } from "react-icons/fa";
+import { useLocation, useNavigate } from 'react-router-dom';
 import loginlogo from '../../assets/images/login/login.svg';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { setAuthToken } from '../../utilities/api/SetAuthToken';
+import SocialLogIn from '../SocialLogIn/SocialLogIn';
 
 const Login = () => {
     const { login } = useContext(AuthContext);
@@ -22,28 +23,8 @@ const Login = () => {
                 console.log(user);
                 alert('Login Successfully')
                 form.reset();
-
-                const currentUser = {
-                    email: user.email
-                }
-
-                console.log(currentUser)
-
                 // jwt token
-                fetch('https://y-three-ebon.vercel.app/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                    .then(res => res.json())
-                    .then(data => {
-                        console.log(data);
-                        // local storage is the easiest but not the best
-                        localStorage.setItem('genius-token', data.token)
-                        navigate(from, { replace: true })
-                    })
+                setAuthToken(user)
             })
             .catch(err => {
                 console.error(err)
@@ -79,17 +60,7 @@ const Login = () => {
                             </div>
                         </form>
                         <div>
-                            <p className='text-base mb-4'>or, Login with</p>
-                            <button className="btn btn-circle btn-outline mr-2">
-                                <FaFacebook></FaFacebook>
-                            </button>
-                            <button className="btn btn-circle btn-outline mr-2">
-                                <FaLinkedin></FaLinkedin>
-                            </button>
-                            <button className="btn btn-circle btn-outline">
-                                <FaGofore></FaGofore>
-                            </button>
-                            <p className='text-base m-8'>new to this website? <span className='text-orange-500 font-bold'><Link to={'/signup'}>Sign Up</Link></span></p>
+                            <SocialLogIn></SocialLogIn>
                         </div>
                     </div>
                 </div>

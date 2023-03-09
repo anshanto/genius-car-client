@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { FaFacebook, FaGofore, FaLinkedin } from "react-icons/fa";
 import login from '../../assets/images/login/login.svg';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
+import { setAuthToken } from '../../utilities/api/SetAuthToken';
+import SocialLogIn from '../SocialLogIn/SocialLogIn';
 
 const Signup = () => {
     const { createUser } = useContext(AuthContext);
@@ -19,6 +19,8 @@ const Signup = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                // jwt token
+                setAuthToken(user)
             })
             .catch(err => console.error(err))
     }
@@ -56,17 +58,7 @@ const Signup = () => {
                                 </div>
                             </form>
                             <div>
-                                <p className='text-base mb-4'>or, Sign Up with</p>
-                                <button className="btn btn-circle btn-outline mr-2">
-                                    <FaFacebook></FaFacebook>
-                                </button>
-                                <button className="btn btn-circle btn-outline mr-2">
-                                    <FaLinkedin></FaLinkedin>
-                                </button>
-                                <button className="btn btn-circle btn-outline">
-                                    <FaGofore></FaGofore>
-                                </button>
-                                <p className='text-base m-8'>Have an account? <span className='text-orange-500 font-bold'><Link to={'/login'}>Login</Link></span></p>
+                                <SocialLogIn></SocialLogIn>
                             </div>
                         </div>
                     </div>
